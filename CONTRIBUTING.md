@@ -55,11 +55,12 @@ upgrade dependencies to releases published after that source snapshot.
 Dependency upgrades should be reviewed separately.
 
 Lint uses ESLint's recommended correctness rules with the TypeScript parser and
-the TypeScript-aware unused-variable rule. The matching parser/plugin 8.55.0
-dependencies support both CI Node versions; no strict TypeScript policy is added.
-They were added with `npm install --save-dev --package-lock-only --ignore-scripts
---before=2026-02-12T13:25:14Z @typescript-eslint/parser@^8.55.0
-@typescript-eslint/eslint-plugin@^8.55.0` after the initial lockfile generation.
+the TypeScript-aware unused-variable rule. The matching parser/plugin 6.21.0
+dependencies preserve the declared Node >=18.0.0 engine contract and support both
+CI Node versions; no strict TypeScript policy is added. They were added with
+`npm install --save-dev --package-lock-only --ignore-scripts
+--before=2026-02-12T13:25:14Z @typescript-eslint/parser@^6.21.0
+@typescript-eslint/eslint-plugin@^6.21.0` after the initial lockfile generation.
 
 ### Documentation
 
