@@ -47,6 +47,20 @@ npm test -- path/to/test
 npm test -- --coverage
 ```
 
+CI runs `npm ci`, `npm test`, and `npm run lint` independently on Node 18 and 20.
+The root lockfile was generated with npm 10.8.2 using
+`npm install --package-lock-only --ignore-scripts --before=2026-02-12T13:25:14Z`,
+the original source commit's timestamp, so restoring CI does not incidentally
+upgrade dependencies to releases published after that source snapshot.
+Dependency upgrades should be reviewed separately.
+
+Lint uses ESLint's recommended correctness rules with the TypeScript parser and
+the TypeScript-aware unused-variable rule. The matching parser/plugin 8.55.0
+dependencies support both CI Node versions; no strict TypeScript policy is added.
+They were added with `npm install --save-dev --package-lock-only --ignore-scripts
+--before=2026-02-12T13:25:14Z @typescript-eslint/parser@^8.55.0
+@typescript-eslint/eslint-plugin@^8.55.0` after the initial lockfile generation.
+
 ### Documentation
 
 - Update README.md for user-facing changes
@@ -61,8 +75,8 @@ npm test -- --coverage
 git clone https://github.com/YOUR_USERNAME/agentfleet
 cd agentfleet
 
-# Install dependencies
-npm install
+# Install the locked dependencies (Node 18 or 20)
+npm ci
 
 # Create a branch
 git checkout -b feature/your-feature
