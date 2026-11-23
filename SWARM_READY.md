@@ -21,7 +21,7 @@ If a `swarm-ready` skill is installed, load it. Otherwise execute the documented
 
 ## Repository starting point
 
-Read: [README.md](README.md), [package.json](package.json), [docs](docs), [tests](tests), [.github](.github).
+Read the [checked-in source map](docs/getting-started.md) and [Development setup](CONTRIBUTING.md#development-setup). The [README](README.md#documentation) is the public index.
 
 Continue an existing approved issue or a clearly scoped user objective after inspecting the source map below. If none is selected, return the smallest useful improvement and its verifier as the handoff; do not begin a portfolio-wide rewrite.
 
@@ -41,13 +41,16 @@ The base above is an inspection snapshot, not a permanent working branch. Refres
 
 ## Verification starting point
 
-| Declared command | Source and limit |
-| --- | --- |
-| `npm run build` | package.json scripts; inspect hooks and select a bounded, non-watch invocation |
-| `npm run test` | package.json scripts; inspect hooks and select a bounded, non-watch invocation |
-| `npm run lint` | package.json scripts; inspect hooks and select a bounded, non-watch invocation |
+For a documentation-only change, run from the repository root:
 
-These commands were read from source, not executed for this documentation change. Build, syntax and lint success are not functional acceptance. Confirm the current setup, lockfile, hooks, required services and focused test scope before running.
+```bash
+git --no-lazy-fetch ls-files --error-unmatch -- package.json package-lock.json .github/workflows/test.yml tests/fleet-manager.test.ts
+git --no-lazy-fetch diff --check HEAD
+```
+
+Expect four tracked paths and no whitespace errors. Inspect [`package.json`](package.json) and [the CI manifest](.github/workflows/test.yml) as text: the declared `test` script is `vitest`, the CI install uses `npm ci`, and the Node matrix is 18.x and 20.x. The CI file has a fallback for `type-check`, but the package does not declare that script.
+
+These checks do not install packages, run tests or CI, start the dev server, connect OpenClaw, or launch agents or bots. A package script or CI declaration is not evidence that the stack runs.
 
 ## Required handoff result
 

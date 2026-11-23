@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Restore deterministic `npm ci` with a root lockfile resolved at the original source snapshot's date.
 - Configure the existing lint command for TypeScript/TSX with compatible parser tooling and recommended correctness checks on Node 18 and 20.
+- Correct contributor setup and document how to review the tracked source without starting AgentFleet or OpenClaw.
 
 ## [0.1.0] - 2026-02-12
 

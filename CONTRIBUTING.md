@@ -36,16 +36,14 @@ Thank you for your interest in contributing to AgentFleet! We welcome contributi
 
 ### Testing
 
+With dependencies already provisioned, use the package's Vitest script in single-run mode or target the checked-in test:
+
 ```bash
-# Run unit tests
-npm test
-
-# Run specific test file
-npm test -- path/to/test
-
-# Run with coverage
-npm test -- --coverage
+npm test -- --run
+npm test -- --run tests/fleet-manager.test.ts
 ```
+
+These are development checks, not prerequisites for [offline documentation review](SWARM_READY.md#verification-starting-point).
 
 CI runs `npm ci`, `npm test`, and `npm run lint` independently on Node 18 and 20.
 The root lockfile was generated with npm 10.8.2 using
@@ -71,20 +69,9 @@ CI Node versions; no strict TypeScript policy is added. They were added with
 
 ## Development Setup
 
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/agentfleet
-cd agentfleet
+The root [package manifest](package.json) declares Node `>=18.0.0`. The tracked [lockfile](package-lock.json) is used by `npm ci` from the repository root. CI checks Node 18 and 20; offline docs review needs neither an install nor a running service.
 
-# Install the locked dependencies (Node 18 or 20)
-npm ci
-
-# Create a branch
-git checkout -b feature/your-feature
-
-# Run development server
-npm run dev
-```
+`npm run dev` points to Vite in `src/web/`, which contains React components but no tracked `index.html`. The API scripts point to `src/api/`, which is absent. Do not treat those script declarations as a working standalone stack. See [Getting started](docs/getting-started.md) for the tracked source and the [Swarm-ready check](SWARM_READY.md#verification-starting-point) for static review.
 
 ## Pull Request Process
 
