@@ -85,25 +85,13 @@ Current: ![GitHub stars](https://img.shields.io/github/stars/opsflowsh/agentflee
 
 ## Quick Start
 
-```bash
-# Prerequisites: OpenClaw installed
-# Visit https://openclaw.ai for installation
-
-# In your OpenClaw chat:
-"Set up AgentFleet for me"
-
-# Or manual installation:
-git clone https://github.com/opsflowsh/agentfleet
-cd agentfleet
-./install.sh
-```
+Start with [Getting started](docs/getting-started.md) to see what is available in this checkout. For documentation-only work, use the [offline verification handoff](SWARM_READY.md); no OpenClaw setup or installer is required.
 
 ## Documentation
 
-- [Getting Started](docs/getting-started.md)
-- [Creating Agents](docs/creating-agents.md)
-- [Mission Control](docs/mission-control.md)
-- [API Reference](docs/api-reference.md)
+- [Getting started and source layout](docs/getting-started.md)
+- [Development setup and checks](CONTRIBUTING.md#development-setup)
+- [Swarm-ready handoff](SWARM_READY.md)
 
 ### Frontend Development
 
@@ -115,7 +103,6 @@ cd agentfleet
 #### Marketing Site (agentfleet.sh)
 - [Frontend Specification](FRONTEND-SPEC.md) - Comprehensive frontend requirements
 - [Frontend Routes (MVP)](FRONTEND-ROUTES.md) - Simplified version for quick start
-- [Frontend Brief](FRONTEND-BRIEF.md) - Brief for hiring frontend developers
 
 ## Use Cases
 
@@ -137,6 +124,8 @@ cd agentfleet
 - Reporter Agent - Generate insights
 
 ## Architecture
+
+This diagram describes the intended product architecture, not services runnable from this checkout.
 
 ```
 ┌─────────────────┐     ┌──────────────┐
@@ -162,20 +151,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ### Development Setup
 
-```bash
-# Clone the repository
-git clone https://github.com/opsflowsh/agentfleet
-cd agentfleet
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Run tests
-npm test
-```
+See [Development setup](CONTRIBUTING.md#development-setup) for the declared Node and lockfile requirements, current startup limitations, and separate paths for development checks and offline documentation review.
 
 ## 🎬 What Makes This Different?
 

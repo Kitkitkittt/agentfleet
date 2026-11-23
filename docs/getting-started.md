@@ -1,124 +1,18 @@
 # Getting Started with AgentFleet
 
-Welcome to AgentFleet! This guide will help you create and manage your first AI agent team.
+This checkout contains TypeScript fleet logic and React components. It is not a standalone control-plane deployment.
 
-## Quick Start
+## Browse the source
 
-### 1. Create Your First Fleet
+| Path | What is checked in |
+| --- | --- |
+| [Fleet manager](../src/core/fleet-manager.ts) | Fleet and agent state and task assignment |
+| [Task queue](../src/core/task-queue.ts) | Local queue logic |
+| [Fleet overview](../src/web/components/FleetOverview.tsx) and [agent card](../src/web/components/AgentCard.tsx) | React components, not a complete Vite app |
+| [Fleet manager tests](../tests/fleet-manager.test.ts) | The checked-in Vitest test file |
 
-```typescript
-import { FleetManager } from '@agentfleet/core';
+For design intent, see [Control Plane MVP](../CONTROL-PLANE-MVP.md) and [Control Plane UI Spec](../CONTROL-PLANE-UI-SPEC.md). This checkout does not provide a separately installed `@agentfleet/core` package, API server, or a verified path to connect OpenClaw, GitHub, or Slack.
 
-const manager = new FleetManager();
-const fleet = manager.createFleet('My DevOps Team', 'your-user-id', 'devops');
+## Choose a check
 
-console.log(`Created fleet with ${fleet.agents.length} agents!`);
-```
-
-### 2. Available Templates
-
-#### DevOps Fleet
-Perfect for infrastructure and operations teams:
-- **CloudBot**: Kubernetes, Terraform, AWS specialist
-- **SecureBot**: Security scanning and compliance
-
-#### Startup Fleet
-Ideal for rapid product development:
-- **CodeBot**: Full-stack development
-- **DesignBot**: UI/UX and prototyping
-
-### 3. Assign Tasks
-
-```typescript
-const task = {
-  title: 'Deploy monitoring stack',
-  requiredSkills: ['kubernetes', 'monitoring'],
-  priority: 'high'
-};
-
-const assigned = manager.assignTask(fleet.id, task);
-```
-
-## Architecture Overview
-
-```
-AgentFleet/
-├── Fleet Manager (Core)
-│   ├── Agent orchestration
-│   ├── Task assignment
-│   └── Status tracking
-├── Web UI (React)
-│   ├── Fleet dashboard
-│   ├── Agent cards
-│   └── Task management
-└── Integrations
-    ├── OpenClaw
-    ├── GitHub
-    └── Slack
-```
-
-## Agent Capabilities
-
-Each agent in your fleet has:
-- **Skills**: Domain-specific capabilities
-- **Model**: LLM powering the agent (GPT-4, Claude, etc.)
-- **Status**: active, idle, or error
-- **Concurrent Tasks**: Maximum parallel workload
-
-## Integration Options
-
-### OpenClaw Integration
-Connect your fleet directly to OpenClaw for seamless deployment:
-
-```bash
-openclaw connect --fleet-id your-fleet-id --api-key your-key
-```
-
-### GitHub Integration
-Automatically create issues and PRs:
-
-```yaml
-integrations:
-  github:
-    repo: your-org/your-repo
-    auto-pr: true
-```
-
-### Slack Notifications
-Keep your team updated:
-
-```yaml
-integrations:
-  slack:
-    webhook: https://hooks.slack.com/...
-    channel: '#ai-agents'
-```
-
-## Best Practices
-
-1. **Start Small**: Begin with 2-3 agents and scale up
-2. **Match Skills**: Ensure agents have skills for your tasks
-3. **Monitor Status**: Keep an eye on agent workload
-4. **Iterate**: Refine agent configurations based on results
-
-## Troubleshooting
-
-### Agent Not Picking Up Tasks
-- Check if agent status is 'idle'
-- Verify task skills match agent capabilities
-- Ensure concurrent task limit not reached
-
-### Integration Issues
-- Verify API keys and webhooks
-- Check network connectivity
-- Review integration logs
-
-## Next Steps
-
-- [Advanced Configuration](./advanced-config.md)
-- [Custom Agent Templates](./custom-agents.md)
-- [API Reference](./api-reference.md)
-
----
-
-Need help? Join our [Discord community](https://discord.gg/agentfleet) or check the [FAQ](./faq.md)!
+Use [Development setup](../CONTRIBUTING.md#development-setup) for the package and lockfile requirements. For a docs change, use [offline verification](../SWARM_READY.md#verification-starting-point). It does not start agents, services, or integrations.
